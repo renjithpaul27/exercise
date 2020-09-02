@@ -1,0 +1,13 @@
+--DDL for Antony
+create table antony
+(id varchar,
+name boolean);
+--DDL for Renjith
+create table renjith
+(id boolean);
+--DDL for Mathew
+create table mathew
+(id varchar);
+--DDL for Anita
+create table anita
+(id varchar);
