@@ -1,0 +1,5 @@
+tablename,columnname,old,new
+antony,id,int,varchar
+antony,name,varchar,boolean
+renjith,id,int,boolean
+anita,id,boolean,varchar
