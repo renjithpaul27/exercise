@@ -3,8 +3,8 @@ import os
 from shutil import copyfile
 import fileinput
 
-server_name = input("Enter the server name: ") #IN2399861W1
-db_name  = input("Enter the database name: ") #dev_raw_adfinitas
+server_name = input("Enter the server name: ")
+db_name  = input("Enter the database name: ")
 
 conn = pyodbc.connect('Driver={SQL Server};Server=%s;Database=%s;Trusted_Connection=yes;'%(server_name,db_name))
 
@@ -42,19 +42,14 @@ else:
     seq_container_name = int(seq_container_name)
 
 
-#print("Double check the template file")
 orginal_template_file_path = input("Enter the path of template file: ") 
-#'C:\\Users\\Renjith.Paul\\Desktop\\TAL\\BIMLPOC\\original_template\\corro_template.xml'
 generated_biml_file_path = input("Enter the path to where BIML file to be generated: ") 
-#"C:\\Users\\Renjith.Paul\\Desktop\\TAL\\BIMLPOC\\generated_biml_scripts"
 for onebyone in table_list:
     table_count = table_count + 1
     seq_container_name = seq_container_name + 1
     TABLE_NAME=onebyone[0]
     table_name_generated  = TABLE_NAME.split("_")
-    #orginal_template_file_path='C:\\Users\\Renjith.Paul\\Desktop\\TAL\\BIMLPOC\\original_template\\corro_template.xml'
     filename = table_name_generated[2] + '_bimlscript.xml'
-    #copyfile(orginal_template_file_path, os.path.join("C:\\Users\\Renjith.Paul\\Desktop\\TAL\\BIMLPOC\\generated_biml_scripts", filename))
     copyfile(orginal_template_file_path, os.path.join(generated_biml_file_path, filename))
     sql ="""select concat(a,b,c) as xml_string from
     (
@@ -108,7 +103,6 @@ for onebyone in table_list:
             line = line.replace('xmlerrorcolumntag', c)
             print (line, end='')
     print("BIML Script generated for Table no {}:{}".format(seq_container_name,TABLE_NAME))
-#print("Script location : C:\\Users\\Renjith.Paul\\Desktop\\TAL\\BIMLPOC\\generated_biml_scripts")
 print("Script generation completed")
 
 
